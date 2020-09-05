@@ -1,0 +1,23 @@
+const store = require("./store");
+
+const addUser = (name, email) => {
+  if (!name || !email) {
+    return Promise.reject("Invalid User");
+  }
+  const user = {
+    name,
+    email,
+  };
+  return store.add(user);
+};
+
+const getUsers = () => {
+  return new Promise((resolve, reject) => {
+    resolve(store.list());
+  });
+};
+
+module.exports = {
+  addUser,
+  getUsers,
+};
